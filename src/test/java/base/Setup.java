@@ -18,7 +18,7 @@ public class Setup {
     @BeforeTest
     public void Setup(){
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
