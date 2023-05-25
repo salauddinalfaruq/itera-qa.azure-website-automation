@@ -174,7 +174,7 @@ public class SignupPage{
         Thread.sleep(1500);
         surnameFiled.sendKeys("Tonoy");
         Thread.sleep(1500);
-        userNameField.sendKeys("tajbirtonoy4");
+        userNameField.sendKeys("tajbirtonoy5");
         Thread.sleep(1500);
         passwordField.sendKeys("12345678");
         Thread.sleep(1500);
