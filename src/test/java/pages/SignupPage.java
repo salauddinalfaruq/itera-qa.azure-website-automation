@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Utils;
 
 public class SignupPage{
 
@@ -46,6 +47,8 @@ public class SignupPage{
     WebElement successfulTextForRegistration;
     @FindBy(className = "label-danger")
     WebElement usernameAlreadyExistMessage;
+
+    Utils utils;
 
     WebDriver driver;
 
@@ -167,14 +170,14 @@ public class SignupPage{
         return errorTextForConfirmPassword;
     }
 
-    public String successfullyRegisterToTheWebsite() throws InterruptedException {
+    public String successfullyRegisterToTheWebsite( String username) throws InterruptedException {
         signupButton.click();
         Thread.sleep(1500);
         firstNameField.sendKeys("Tajbir");
         Thread.sleep(1500);
         surnameFiled.sendKeys("Tonoy");
         Thread.sleep(1500);
-        userNameField.sendKeys("tajbirtonoy5");
+        userNameField.sendKeys(username);
         Thread.sleep(1500);
         passwordField.sendKeys("12345678");
         Thread.sleep(1500);
