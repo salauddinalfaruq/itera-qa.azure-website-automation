@@ -12,11 +12,12 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Utils {
 
-    private String username;
 
     public void takeScreenshot(WebDriver driver) throws IOException {
 
@@ -36,7 +37,6 @@ public class Utils {
     public String generateRandomData(){
         Faker faker = new Faker();
         String username = faker.name().username();
-        System.out.println(username);
         return username;
     }
 
@@ -57,5 +57,20 @@ public class Utils {
         fileWriter.write(userArray.toJSONString());
         fileWriter.flush();
         fileWriter.close();
+    }
+
+    public void getAllUserName() throws IOException, ParseException {
+
+        String filePath = "./src/test/resources/users.json";
+
+        JSONParser jsonParser = new JSONParser();
+        Object object = jsonParser.parse(new FileReader(filePath));
+        JSONArray userArray = (JSONArray) object;
+
+        for(int i = 0; i<= userArray.size()-1 ; i++ ){
+            JSONObject userObject = (JSONObject)userArray.get(i);
+            String username = (String) userObject.get("username");
+            System.out.println(username);
+        }
     }
 }

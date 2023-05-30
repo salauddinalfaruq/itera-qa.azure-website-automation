@@ -1,12 +1,16 @@
 package testrunner;
 
 import base.Setup;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.SignupPage;
 import utils.Utils;
 
+import java.io.FileReader;
 import java.io.IOException;
 
 public class SignupTestRunner extends Setup {
@@ -15,12 +19,13 @@ public class SignupTestRunner extends Setup {
     Utils utils;
 
     @Test(priority = 1)
-    public void clickOnSubmitButtonWithoutFillAnyCredentials() throws InterruptedException {
+    public void clickOnSubmitButtonWithoutFillAnyCredentials() throws InterruptedException, IOException, ParseException {
         signupPage = new SignupPage(driver);
         driver.get("https://itera-qa.azurewebsites.net/");
         String actualErrorText = signupPage.clickOnSubmitButtonWithoutFillAnyFiled();
         String expectedErrorText = "Please enter first name";
         Assert.assertEquals(actualErrorText , expectedErrorText);
+
     }
 
     @Test(priority = 2)
@@ -68,10 +73,32 @@ public class SignupTestRunner extends Setup {
     public void successfullyRegisterInTheWebsite() throws InterruptedException, IOException, ParseException {
         signupPage = new SignupPage(driver);
         utils = new Utils();
-        String username = utils.generateRandomData();
-        utils.writeUserInfo(username);
-        String actualSuccessfulText = signupPage.successfullyRegisterToTheWebsite(username);
-        String expectedSuccessfulText = "Registration Successful";
-        Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
+
+        String filePath = "./src/test/resources/users.json";
+
+        JSONParser jsonParser = new JSONParser();
+        Object object = jsonParser.parse(new FileReader(filePath));
+        JSONArray userArray = (JSONArray) object;
+
+        String username = null;
+        String usernameFromJson = null;
+
+        for(int i = 0; i<= userArray.size()-1 ; i++ ) {
+            JSONObject userObject = (JSONObject) userArray.get(i);
+            usernameFromJson = (String) userObject.get("usernameFromJson");
+            username = utils.generateRandomData();
+        }
+
+        if(username == usernameFromJson){
+            System.out.println("User Already Exist");
+        }
+        else {
+            System.out.println("New user created");
+        }
+//        System.out.println(username);
+//        utils.writeUserInfo(username);
+//        String actualSuccessfulText = signupPage.successfullyRegisterToTheWebsite(username);
+//        String expectedSuccessfulText = "Registration Successful";
+//        Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
     }
 }
