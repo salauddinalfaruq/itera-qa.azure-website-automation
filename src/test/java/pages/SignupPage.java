@@ -196,5 +196,32 @@ public class SignupPage{
         Thread.sleep(1500);
         return Pair.of(successfulRegistrationText , usernameAlreadyExistText);
     }
+
+    public Pair<String , String> successfullyRegisterToTheWebsiteWithFillAllCredentials(String username) throws InterruptedException {
+        signupButton.click();
+        Thread.sleep(1500);
+        firstNameField.sendKeys("Tajbir");
+        Thread.sleep(1500);
+        surnameFiled.sendKeys("Tonoy");
+        Thread.sleep(1500);
+        ePostField.sendKeys("NGN-6500");
+        Thread.sleep(1500);
+        mobileNumberField.sendKeys("011111111111");
+        userNameField.sendKeys(username);
+        Thread.sleep(1500);
+        passwordField.sendKeys("12345678");
+        Thread.sleep(1500);
+        confirmPasswordField.sendKeys("12345678");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", submitButton);
+        Thread.sleep(1500);
+        submitButton.click();
+        Thread.sleep(1500);
+        String successfulRegistrationText = successfulTextForRegistration.getText();
+        String usernameAlreadyExistText = usernameAlreadyExistMessage.getText();
+        js.executeScript("arguments[0].scrollIntoView();", successfulTextForRegistration);
+        Thread.sleep(1500);
+        return Pair.of(successfulRegistrationText , usernameAlreadyExistText);
+    }
 }
 
