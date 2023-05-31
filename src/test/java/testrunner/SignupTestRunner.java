@@ -29,7 +29,7 @@ public class SignupTestRunner extends Setup {
         Assert.assertEquals(actualErrorText , expectedErrorText);
     }
 
- /*   @Test(priority = 2)
+    @Test(priority = 2)
     public void clickOnSubmitButtonWithOnlyFillFirstName() throws InterruptedException {
         signupPage = new SignupPage(driver);
         String actualErrorText = signupPage.clickOnSubmitButtonWithOnlyFillFirstName();
@@ -68,7 +68,7 @@ public class SignupTestRunner extends Setup {
         String actualErrorText = signupPage.clickONSubmitButtonWithoutMatchConfirmPassword();
         String expectedErrorText = "'Confirm password' and 'Password' do not match.";
         Assert.assertEquals(actualErrorText , expectedErrorText);
-    } */
+    }
 
     @Test(priority = 7)
     public void successfullyRegisterInTheWebsite() throws InterruptedException, IOException, ParseException {
@@ -82,8 +82,8 @@ public class SignupTestRunner extends Setup {
         JSONArray userArray = (JSONArray) object;
 
 
-       // String username = utils.generateRandomData();
-        String username = "delmar.mraz";
+        String username = utils.generateRandomData();
+//        String username = "delmar.mraz";
         boolean usernameExist = false;
 
         for (int i = 0; i <= userArray.size() - 1; i++) {
