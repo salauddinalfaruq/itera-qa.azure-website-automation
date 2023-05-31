@@ -1,11 +1,14 @@
 package pages;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utils;
+
+import java.util.Optional;
 
 public class SignupPage{
 
@@ -170,7 +173,7 @@ public class SignupPage{
         return errorTextForConfirmPassword;
     }
 
-    public String successfullyRegisterToTheWebsite( String username) throws InterruptedException {
+    public Pair<String , String> successfullyRegisterToTheWebsite(String username) throws InterruptedException {
         signupButton.click();
         Thread.sleep(1500);
         firstNameField.sendKeys("Tajbir");
@@ -188,9 +191,10 @@ public class SignupPage{
         submitButton.click();
         Thread.sleep(1500);
         String successfulRegistrationText = successfulTextForRegistration.getText();
+        String usernameAlreadyExistText = usernameAlreadyExistMessage.getText();
         js.executeScript("arguments[0].scrollIntoView();", successfulTextForRegistration);
         Thread.sleep(1500);
-        System.out.println(successfulRegistrationText);
-        return successfulRegistrationText;
+        return Pair.of(successfulRegistrationText , usernameAlreadyExistText);
     }
 }
+

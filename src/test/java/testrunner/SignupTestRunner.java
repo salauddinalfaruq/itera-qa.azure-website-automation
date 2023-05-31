@@ -1,6 +1,7 @@
 package testrunner;
 
 import base.Setup;
+import org.apache.commons.lang3.tuple.Pair;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,6 +18,7 @@ public class SignupTestRunner extends Setup {
 
     SignupPage signupPage;
     Utils utils;
+
 
     @Test(priority = 1)
     public void clickOnSubmitButtonWithoutFillAnyCredentials() throws InterruptedException, IOException, ParseException {
@@ -80,7 +82,8 @@ public class SignupTestRunner extends Setup {
         JSONArray userArray = (JSONArray) object;
 
 
-        String username = utils.generateRandomData();
+       // String username = utils.generateRandomData();
+        String username = "delmar.mraz";
         boolean usernameExist = false;
 
         for (int i = 0; i <= userArray.size() - 1; i++) {
@@ -95,12 +98,18 @@ public class SignupTestRunner extends Setup {
         }
 
         if(usernameExist){
+            Pair<String , String> result = signupPage.successfullyRegisterToTheWebsite(username);
+            String actualUsernameExistText = result.getRight();
+            System.out.println(actualUsernameExistText);
+            String expectedUsernameExistText = "Username already exist";
+            Assert.assertEquals(actualUsernameExistText , expectedUsernameExistText);
             System.out.println("User Already Exist");
         }
         else {
             System.out.println(username);
             utils.writeUserInfo(username);
-            String actualSuccessfulText = signupPage.successfullyRegisterToTheWebsite(username);
+            Pair<String , String> result = signupPage.successfullyRegisterToTheWebsite(username);
+            String actualSuccessfulText = result.getLeft();
             String expectedSuccessfulText = "Registration Successful";
             Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
             System.out.println("New user created");
