@@ -29,7 +29,7 @@ public class SignupTestRunner extends Setup {
         Assert.assertEquals(actualErrorText , expectedErrorText);
     }
 
- /*   @Test(priority = 2)
+    @Test(priority = 2)
     public void clickOnSubmitButtonWithOnlyFillFirstName() throws InterruptedException {
         signupPage = new SignupPage(driver);
         String actualErrorText = signupPage.clickOnSubmitButtonWithOnlyFillFirstName();
@@ -114,7 +114,7 @@ public class SignupTestRunner extends Setup {
             Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
             System.out.println("New user created");
         }
-    }  */
+    }
 
     @Test(priority = 8)
     public void successfullyRegisterInTheWebsiteOrWantToRegisterWithExistingUserWithFillAllRegistrationField() throws InterruptedException, IOException, ParseException {
