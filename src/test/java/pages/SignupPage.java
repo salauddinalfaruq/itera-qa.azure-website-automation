@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utils;
 
-import java.util.Optional;
-
 public class SignupPage{
 
     // All element locators for signup page
@@ -17,7 +15,7 @@ public class SignupPage{
     @FindBy(xpath = "//a[normalize-space()='Sign Up']")
     WebElement signupButton;
     @FindBy(xpath = "//a[normalize-space()='Login']")
-    WebElement loginButton;
+    WebElement linkLogin;
     @FindBy(xpath = "//td[@class='btn btn-link']")
     WebElement buttonForSignupFromLoginPage;
     @FindBy(name = "FirstName")
@@ -50,8 +48,6 @@ public class SignupPage{
     WebElement successfulTextForRegistration;
     @FindBy(className = "label-danger")
     WebElement usernameAlreadyExistMessage;
-
-    Utils utils;
 
     WebDriver driver;
 
@@ -198,7 +194,7 @@ public class SignupPage{
     }
 
     public Pair<String , String> successfullyRegisterToTheWebsiteWithFillAllCredentials(String username) throws InterruptedException {
-        loginButton.click();
+        linkLogin.click();
         Thread.sleep(1500);
         buttonForSignupFromLoginPage.click();
         Thread.sleep(1500);
