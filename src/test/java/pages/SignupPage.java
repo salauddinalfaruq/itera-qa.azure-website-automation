@@ -198,7 +198,9 @@ public class SignupPage{
     }
 
     public Pair<String , String> successfullyRegisterToTheWebsiteWithFillAllCredentials(String username) throws InterruptedException {
-        signupButton.click();
+        loginButton.click();
+        Thread.sleep(1500);
+        buttonForSignupFromLoginPage.click();
         Thread.sleep(1500);
         firstNameField.sendKeys("Tajbir");
         Thread.sleep(1500);

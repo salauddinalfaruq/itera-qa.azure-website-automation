@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0e2056a-18f5-490d-b188-53d367ed4ff5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/pages/SignupPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/pages/SignupPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/testrunner/SignupTestRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/testrunner/SignupTestRunner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/test/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/test/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/SignupPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/testrunner/SignupTestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testrunner/SignupTestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/users.json" afterDir="false" />
     </list>
