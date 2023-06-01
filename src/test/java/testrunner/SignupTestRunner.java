@@ -71,7 +71,7 @@ public class SignupTestRunner extends Setup {
     }
 
     @Test(priority = 7)
-    public void successfullyRegisterInTheWebsite() throws InterruptedException, IOException, ParseException {
+    public void successfullyRegisterInTheWebsiteOrWantToRegisterWithExistingUser() throws InterruptedException, IOException, ParseException {
         signupPage = new SignupPage(driver);
         utils = new Utils();
 
@@ -109,6 +109,53 @@ public class SignupTestRunner extends Setup {
             System.out.println(username);
             utils.writeUserInfo(username);
             Pair<String , String> result = signupPage.successfullyRegisterToTheWebsite(username);
+            String actualSuccessfulText = result.getLeft();
+            String expectedSuccessfulText = "Registration Successful";
+            Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
+            System.out.println("New user created");
+        }
+    }
+
+    @Test(priority = 8)
+    public void successfullyRegisterInTheWebsiteOrWantToRegisterWithExistingUserWithFillAllRegistrationField() throws InterruptedException, IOException, ParseException {
+
+        signupPage = new SignupPage(driver);
+        utils = new Utils();
+
+        String filePath = "./src/test/resources/users.json";
+
+        JSONParser jsonParser = new JSONParser();
+        Object object = jsonParser.parse(new FileReader(filePath));
+        JSONArray userArray = (JSONArray) object;
+
+
+//        String username = utils.generateRandomData();
+        String username = "erwin.walsh";
+        boolean usernameExist = false;
+
+        for (int i = 0; i <= userArray.size() - 1; i++) {
+
+            JSONObject userObject = (JSONObject) userArray.get(i);
+            String usernameFromJson = (String) userObject.get("username");
+
+            if (username.equals(usernameFromJson)){
+                usernameExist = true;
+                break;
+            }
+        }
+
+        if(usernameExist){
+            Pair<String , String> result = signupPage.successfullyRegisterToTheWebsiteWithFillAllCredentials(username);
+            String actualUsernameExistText = result.getRight();
+            System.out.println(actualUsernameExistText);
+            String expectedUsernameExistText = "Username already exist";
+            Assert.assertEquals(actualUsernameExistText , expectedUsernameExistText);
+            System.out.println("User Already Exist");
+        }
+        else {
+            System.out.println(username);
+            utils.writeUserInfo(username);
+            Pair<String , String> result = signupPage.successfullyRegisterToTheWebsiteWithFillAllCredentials(username);
             String actualSuccessfulText = result.getLeft();
             String expectedSuccessfulText = "Registration Successful";
             Assert.assertEquals(actualSuccessfulText , expectedSuccessfulText);
