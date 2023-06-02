@@ -23,7 +23,7 @@ public class LoginTestRunner extends Setup {
         Assert.assertEquals(actualTextForSuggestToEnterPassword , expectedTextForSuggestToEnterPassword);
     }
 
- /*   @Test(priority = 2)
+    @Test(priority = 2)
     public void loginWithoutGivePassword() throws InterruptedException {
         loginPage = new LoginPage(driver);
         String actualText = loginPage.clickOnLoginButtonWithoutGivePassword();
@@ -69,7 +69,7 @@ public class LoginTestRunner extends Setup {
         String actualText = loginPage.clickOnLoginButtonWithInvalidPassword();
         String expectedText = "Wrong username or password";
         Assert.assertEquals(actualText , expectedText);
-    } */
+    }
 
     @Test(priority = 8)
     public void loginSuccessfulInTheWebsite() throws InterruptedException {
