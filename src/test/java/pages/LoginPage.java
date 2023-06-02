@@ -21,9 +21,11 @@ public class LoginPage {
     @FindBy(xpath = "//span[normalize-space()='Please enter username']")
     WebElement suggestMessageForEnterUserName;
     @FindBy(xpath = "//span[normalize-space()='Please enter password']")
-    WebElement getSuggestMessageForEnterPassword;
+    WebElement suggestMessageForEnterPassword;
     @FindBy(xpath = "//label[normalize-space()='Wrong username or password']")
     WebElement errorMessageForEnterWrongUsernameOrPassword;
+    @FindBy(xpath = "//a[normalize-space()='Log out']")
+    WebElement logoutButton;
 
     WebDriver driver;
 
@@ -34,6 +36,8 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    // All positive and negative test steps for login
+
     public Pair<String , String> clickOnLoginButtonWithoutEnterAnyCredentials() throws InterruptedException {
         linkLogin.click();
         Thread.sleep(1500);
@@ -41,8 +45,85 @@ public class LoginPage {
         Thread.sleep(1500);
         String suggestTextForEnterUserName = suggestMessageForEnterUserName.getText();
         Thread.sleep(1500);
-        String suggestTextForEnterPassword = getSuggestMessageForEnterPassword.getText();
+        String suggestTextForEnterPassword = suggestMessageForEnterPassword.getText();
         Thread.sleep(1500);
         return Pair.of(suggestTextForEnterUserName , suggestTextForEnterPassword);
+    }
+
+    public String clickOnLoginButtonWithoutGivePassword() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("esteban.reinge");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        String textForSuggestPassword = suggestMessageForEnterPassword.getText();
+        return textForSuggestPassword;
+    }
+
+    public String clickOnLoginButtonWithoutGiveUsername() throws InterruptedException {
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("12345678");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        String textForSuggestUsername = suggestMessageForEnterUserName.getText();
+        return textForSuggestUsername;
+    }
+
+    public void giveUsernameAndPasswordAndClickOnClearButton() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("Shahriar");
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("12345678");
+        Thread.sleep(1500);
+        clearButtonForRemoveUsernamePassword.click();
+    }
+
+    public String clickOnLoginButtonWithInvalidUsername() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("esteban.");
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("12345678");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        String errorTextForLogin = errorMessageForEnterWrongUsernameOrPassword.getText();
+        return errorTextForLogin;
+    }
+
+    public String clickOnLoginButtonWithInvalidUserNameAndPassword() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("esteban.");
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("1234");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        String errorTextForLogin = errorMessageForEnterWrongUsernameOrPassword.getText();
+        return errorTextForLogin;
+    }
+
+    public String clickOnLoginButtonWithInvalidPassword() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("esteban.reinge");
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("1234");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        String errorTextForLogin = errorMessageForEnterWrongUsernameOrPassword.getText();
+        return errorTextForLogin;
+    }
+
+    public boolean successfullyLoginToTheWebsiteWithValidUsernameAndPassword() throws InterruptedException {
+        Thread.sleep(1500);
+        usernameFieldForLogin.sendKeys("esteban.reinge");
+        Thread.sleep(1500);
+        passwordFieldForLogin.sendKeys("12345678");
+        Thread.sleep(1500);
+        loginButtonToTheWebsite.click();
+        Thread.sleep(1500);
+        boolean logoutButtonFoundOrNotFound = logoutButton.isDisplayed();
+        return logoutButtonFoundOrNotFound;
     }
 }
