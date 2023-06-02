@@ -90,7 +90,7 @@ public class LoginPage {
 
     public String clickOnLoginButtonWithInvalidUsername() throws InterruptedException {
         Thread.sleep(1500);
-        clearButtonForRemoveUsernamePassword.click();
+        linkLogin.click();
         Thread.sleep(1500);
         usernameFieldForLogin.sendKeys("esteban.");
         Thread.sleep(1500);
@@ -104,7 +104,7 @@ public class LoginPage {
 
     public String clickOnLoginButtonWithInvalidPassword() throws InterruptedException {
         Thread.sleep(1500);
-        linkLogin.click();
+        clearButtonForRemoveUsernamePassword.click();
         Thread.sleep(1500);
         usernameFieldForLogin.sendKeys("esteban.reinge");
         Thread.sleep(1500);

@@ -66,7 +66,7 @@ public class LoginTestRunner extends Setup {
     @Test(priority = 7)
     public void loginWithInvalidUsernamePassword() throws InterruptedException {
         loginPage = new LoginPage(driver);
-        String actualText = loginPage.clickOnLoginButtonWithInvalidPassword();
+        String actualText = loginPage.clickOnLoginButtonWithInvalidUserNameAndPassword();
         String expectedText = "Wrong username or password";
         Assert.assertEquals(actualText , expectedText);
     }
